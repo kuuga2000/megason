@@ -22,6 +22,8 @@ MAGENTO_ADMIN_USER=${MAGENTO_ADMIN_USER:-admin}
 MAGENTO_ADMIN_PASSWORD=${MAGENTO_ADMIN_PASSWORD:-Admin123!Admin123!}
 MAGENTO_ADMIN_EMAIL=${MAGENTO_ADMIN_EMAIL:-admin@example.com}
 TZ=${TZ:-Asia/Jakarta}
+HOST_USER_ID=${HOST_USER_ID:-1000}
+HOST_GROUP_ID=${HOST_GROUP_ID:-1000}
 
 cd "$APP_DIR"
 
@@ -127,7 +129,10 @@ php -d memory_limit=-1 bin/magento setup:static-content:deploy -f en_US
 ./fix-static-icon-escapes.sh
 php -d memory_limit=-1 bin/magento indexer:reindex
 php -d memory_limit=-1 bin/magento cache:flush
-chown -R www-data:www-data var generated pub/static pub/media app/etc
+chown -R "$HOST_USER_ID:$HOST_GROUP_ID" "$APP_DIR"
+chgrp -R www-data var generated pub/static pub/media app/etc
 chmod -R ug+rwX var generated pub/static pub/media app/etc
+chgrp www-data auth.json
+chmod 640 auth.json
 
 echo "Magento ${MAGENTO_VERSION} installed successfully at ${MAGENTO_BASE_URL}"
