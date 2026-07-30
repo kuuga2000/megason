@@ -1,0 +1,39 @@
+# Local environment and secrets
+.env
+*.env
+!.env.example
+magento237/auth.json
+
+# Magento dependencies and generated/runtime files
+magento237/vendor/
+magento237/var/
+magento237/generated/
+magento237/pub/static/
+magento237/pub/media/
+magento237/pub/opt/
+magento237/pub/sitemap/
+magento237/pub/errors/local.xml
+magento237/app/etc/env.php
+magento237/app/etc/config.php
+magento237/app/etc/db_schema_whitelist.json
+magento237/update/
+
+# Magento package archives and reports
+magento237/*.log
+magento237/*.tar
+magento237/*.tar.gz
+magento237/*.zip
+
+# Node/frontend tooling
+magento237/node_modules/
+magento237/.grunt/
+magento237/.sass-cache/
+
+# Docker, OS, and editor noise
+.docker/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

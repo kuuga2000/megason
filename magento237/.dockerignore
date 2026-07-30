@@ -1,0 +1,7 @@
+.git
+vendor
+var
+generated
+pub/static
+pub/media
+node_modules
