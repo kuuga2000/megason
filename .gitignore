@@ -1,6 +1,6 @@
 # Local environment and secrets
-.env
-*.env
+#.env
+#*.env
 !.env.example
 magento237/auth.json
 
